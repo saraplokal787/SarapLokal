@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sarap Lokal — From Local Ingredients to Every Filipino Table.">
+  <title>Sarap Lokal | Filipino Food Company</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#1f4d2d; --green-dark:#14351f; --green-soft:#e9f0e3;
+      --cream:#fff9ec; --cream-2:#f5ead4; --brown:#704522; --brown-dark:#4b2b19;
+      --gold:#d89b1d; --gold-soft:#f5dda0; --ink:#20251f; --muted:#6d746d; --white:#fff;
+      --shadow:0 18px 55px rgba(40,45,32,.12); --radius:24px; --max:1180px;
+    }
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--cream);line-height:1.7}
+    img{max-width:100%;display:block} a{text-decoration:none;color:inherit}
+    button,input,textarea{font:inherit}
+    .topbar{background:var(--green-dark);color:#fff9ec;text-align:center;padding:8px 16px;font-size:.82rem;letter-spacing:.05em}
+    header{position:sticky;top:0;z-index:1000;background:rgba(255,249,236,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(31,77,45,.12)}
+    .nav{max-width:var(--max);min-height:82px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:12px;min-width:190px}.brand img{width:58px;height:58px;object-fit:contain;border-radius:50%}.brand-text strong{display:block;font-family:"Playfair Display",serif;color:var(--green);font-size:1.28rem;line-height:1}.brand-text span{display:block;font-size:.68rem;color:var(--brown);font-weight:800;letter-spacing:.1em;margin-top:4px}
+    .nav-links{list-style:none;display:flex;gap:4px;margin:0;padding:0;align-items:center}.nav-links a{display:block;padding:10px 9px;border-radius:12px;font-size:.73rem;font-weight:800;letter-spacing:.035em;color:var(--green-dark);transition:.25s}.nav-links a:hover{background:var(--green);color:#fff}
+    .menu-toggle{display:none;border:0;background:var(--green);color:#fff;border-radius:12px;padding:10px 13px;cursor:pointer}
+    .hero{position:relative;min-height:720px;display:grid;align-items:center;overflow:hidden;background:var(--green-dark)}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.48}.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,34,19,.92) 0%,rgba(11,34,19,.62) 46%,rgba(11,34,19,.22) 100%)}
+    .hero-content{position:relative;z-index:2;max-width:var(--max);width:100%;margin:auto;padding:90px 20px;color:#fff}.eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(255,248,233,.12);border:1px solid rgba(255,248,233,.24);padding:8px 13px;border-radius:999px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero h1{font-family:"Playfair Display",serif;font-size:clamp(3.3rem,7vw,6.5rem);line-height:.98;max-width:780px;margin:24px 0 18px}.hero h1 span{color:var(--gold-soft)}.hero p{max-width:650px;font-size:1.1rem;color:rgba(255,255,255,.86);margin:0 0 30px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:999px;font-weight:800;border:1px solid transparent;transition:.25s}.btn-primary{background:var(--gold);color:var(--brown-dark)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(216,155,29,.25)}.btn-light{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.4);color:#fff}.btn-light:hover{background:#fff;color:var(--green-dark)}
+    .section{padding:92px 20px}.container{max-width:var(--max);margin:auto}.section-head{max-width:730px;margin-bottom:42px}.kicker{font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.section h2{font-family:"Playfair Display",serif;color:var(--green-dark);font-size:clamp(2.1rem,4vw,3.35rem);line-height:1.08;margin:0 0 13px}.section-head p{color:var(--muted);margin:0}
+    .about{background:#fffdf7}.about-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:54px;align-items:center}.about-photo{border-radius:30px;overflow:hidden;box-shadow:var(--shadow);background:var(--cream-2)}.about-photo img{width:100%;height:540px;object-fit:cover}.about-copy p{color:var(--muted)}.feature-list{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:26px}.feature{background:var(--green-soft);border-radius:17px;padding:17px}.feature strong{display:block;color:var(--green-dark);margin-bottom:3px}.feature span{font-size:.9rem;color:var(--muted)}
+    .products{background:var(--cream-2)}.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.product{background:#fff;border:1px solid rgba(31,77,45,.08);border-radius:24px;overflow:hidden;box-shadow:0 12px 32px rgba(60,50,30,.08);transition:.3s}.product:hover{transform:translateY(-7px);box-shadow:var(--shadow)}.product-image{height:275px;overflow:hidden}.product-image img{width:100%;height:100%;object-fit:cover;transition:.45s}.product:hover .product-image img{transform:scale(1.05)}.product-body{padding:23px}.product-body h3{font-family:"Playfair Display",serif;color:var(--green-dark);font-size:1.55rem;margin:0 0 7px}.product-body p{color:var(--muted);margin:0 0 16px;font-size:.94rem}.price-pill{display:inline-block;background:var(--gold-soft);color:var(--brown-dark);font-weight:800;padding:6px 12px;border-radius:999px}
+    .favorites{background:#fffdf7}.favorites-grid{display:grid;grid-template-columns:1.25fr .75fr .75fr;grid-template-rows:250px 250px;gap:18px}.favorite-card{position:relative;overflow:hidden;border-radius:23px;min-height:180px;box-shadow:0 12px 35px rgba(40,45,32,.1)}.favorite-card:first-child{grid-row:span 2}.favorite-card img{width:100%;height:100%;object-fit:cover;transition:.45s}.favorite-card:hover img{transform:scale(1.06)}.favorite-label{position:absolute;left:15px;right:15px;bottom:15px;background:rgba(20,53,31,.84);color:#fff;padding:11px 14px;border-radius:14px;font-weight:800;backdrop-filter:blur(7px)}
+    .logistics{background:var(--green-dark);color:#fff}.logistics h2{color:#fff}.logistics .section-head p{color:rgba(255,255,255,.72)}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.step{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);border-radius:20px;padding:22px}.step-num{width:37px;height:37px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:var(--brown-dark);font-weight:900;margin-bottom:18px}.step h3{margin:0 0 6px;font-size:1.05rem}.step p{margin:0;color:rgba(255,255,255,.68);font-size:.9rem}.flow{margin-top:28px;padding:16px;border-radius:16px;background:rgba(255,255,255,.08);text-align:center;font-weight:800;color:var(--gold-soft)}
+    .price-section{background:var(--cream)}.table-wrap{overflow:auto;border-radius:20px;box-shadow:var(--shadow)}table{width:100%;border-collapse:collapse;background:#fff;min-width:620px}th,td{text-align:left;padding:17px 19px;border-bottom:1px solid #eee7d8}th{background:var(--green);color:#fff;font-size:.86rem;letter-spacing:.04em}td{color:var(--muted)}td strong{color:var(--green-dark)}tr:last-child td{border-bottom:0}.payment{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap}.payment span{background:var(--green-soft);padding:9px 14px;border-radius:999px;font-weight:800;color:var(--green-dark)}
+    .process{background:#fffdf7}.process-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:center}.video-wrap{border-radius:28px;overflow:hidden;box-shadow:var(--shadow);background:#111}.video-wrap video{width:100%;display:block;aspect-ratio:16/10;object-fit:cover}.process-note{padding:28px;border-radius:23px;background:var(--green-soft)}.process-note h3{font-family:"Playfair Display",serif;color:var(--green-dark);font-size:1.8rem;margin:0 0 10px}.process-note p{color:var(--muted);margin:0}
+    .contact{background:var(--cream-2)}.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:42px}.contact-card,.contact-form{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 35px rgba(60,50,30,.08)}.contact-item{padding:16px 0;border-bottom:1px solid #eee7d8}.contact-item:last-child{border-bottom:0}.contact-item small{display:block;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);font-weight:900;font-size:.7rem}.contact-item strong{color:var(--green-dark)}form{display:grid;gap:15px}label{font-weight:800;color:var(--green-dark);font-size:.88rem}input,textarea{width:100%;border:1px solid #dfd8c8;background:#fffdf7;border-radius:13px;padding:12px 14px;outline:none}input:focus,textarea:focus{border-color:var(--green)}textarea{min-height:145px;resize:vertical}.form-note{font-size:.8rem;color:var(--muted);margin:0}
+    footer{background:#0e2817;color:rgba(255,255,255,.7);padding:28px 20px}.footer-inner{max-width:var(--max);margin:auto;display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-brand{color:#fff;font-weight:900}.footer-tag{font-size:.84rem}
+    .reveal{animation:rise .8s ease both}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+    @media(max-width:980px){.nav-links{display:none;position:absolute;left:14px;right:14px;top:80px;background:var(--cream);padding:12px;border-radius:18px;box-shadow:var(--shadow);flex-direction:column;align-items:stretch}.nav-links.open{display:flex}.nav-links a{text-align:center}.menu-toggle{display:block}.products-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}.process-grid,.contact-grid{grid-template-columns:1fr}.favorites-grid{grid-template-columns:1fr 1fr;grid-template-rows:260px 220px 220px}.favorite-card:first-child{grid-row:span 1;grid-column:span 2}}
+    @media(max-width:700px){.hero{min-height:650px}.hero h1{font-size:3.3rem}.section{padding:70px 18px}.about-grid{grid-template-columns:1fr;gap:28px}.about-photo img{height:390px}.feature-list{grid-template-columns:1fr}.products-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.favorites-grid{grid-template-columns:1fr;grid-template-rows:repeat(4,230px)}.favorite-card:first-child{grid-column:auto}.footer-inner{flex-direction:column;text-align:center}.brand-text span{display:none}.brand{min-width:auto}}
+  </style>
+</head>
+<body>
+  <div class="topbar">Sarap Lokal • From Local Ingredients to Every Filipino Table.</div>
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home">
+        <img src="sarap-lokal-logo.jfif" alt="Sarap Lokal logo">
+        <span class="brand-text"><strong>Sarap Lokal</strong><span>Filipino Food Company</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+      <ul class="nav-links">
+        <li><a href="#home">HOME</a></li><li><a href="#about">ABOUT US</a></li><li><a href="#products">PRODUCTS</a></li><li><a href="#logistics">LOGISTICS</a></li><li><a href="#price">PRICE</a></li><li><a href="#favorites">FAVORITES</a></li><li><a href="#process">OUR PROCESS</a></li><li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <video class="hero-video" autoplay muted loop playsinline poster="sarap-lokal-poster.jpg" aria-hidden="true"><source src="sarap-lokal-video.mp4" type="video/mp4"></video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <div class="eyebrow">Made with local Filipino flavor</div>
+        <h1>From Local Ingredients to <span>Every Filipino Table.</span></h1>
+        <p>Sarap Lokal brings comforting Filipino flavors closer to students, workers, families, and food lovers through affordable, quality meals made with locally sourced ingredients.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#products">Explore Our Products</a><a class="btn btn-light" href="#about">Learn About Us</a></div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="about-photo reveal"><img src="about-us-photo.jpg" alt="Filipino family enjoying a meal together" loading="lazy"></div>
+        <div class="about-copy reveal">
+          <div class="section-head"><div class="kicker">About Sarap Lokal</div><h2>Filipino food is more than a meal.</h2><p>Sarap Lokal is a Filipino food company built around the warmth, familiarity, and culture found in everyday Filipino dining. We use local ingredients and careful preparation to create food that feels comforting, accessible, and proudly local.</p></div>
+          <div class="feature-list">
+            <div class="feature"><strong>Locally Sourced</strong><span>We support local suppliers and ingredients whenever possible.</span></div>
+            <div class="feature"><strong>Quality Focused</strong><span>Ingredients are checked and handled with care before preparation.</span></div>
+            <div class="feature"><strong>Affordable Meals</strong><span>Simple Filipino favorites made accessible to everyday customers.</span></div>
+            <div class="feature"><strong>Customer First</strong><span>We value taste, proper packaging, service, and satisfaction.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section products" id="products">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Our Products</div><h2>Familiar Filipino favorites, made for everyday meals.</h2><p>Three featured products for our business project, using the photos you provided for the website.</p></div>
+        <div class="products-grid">
+          <article class="product reveal"><div class="product-image"><img src="adobo.jpg" alt="Filipino chicken and pork adobo with rice" loading="lazy"></div><div class="product-body"><h3>Adobo</h3><p>A classic Filipino dish with a savory and flavorful taste.</p><span class="price-pill">₱120</span></div></article>
+          <article class="product reveal"><div class="product-image"><img src="fresh-local-meal.jpg" alt="Fresh local Filipino meal with grilled fish, rice, and vegetables" loading="lazy"></div><div class="product-body"><h3>Fresh Local Meal</h3><p>A delicious meal prepared using fresh ingredients sourced from local suppliers.</p><span class="price-pill">₱130</span></div></article>
+          <article class="product reveal"><div class="product-image"><img src="pinoy-comfort-food.jpg" alt="Pinoy comfort food with vegetables, pork, and rice" loading="lazy"></div><div class="product-body"><h3>Pinoy Comfort Food</h3><p>A satisfying Filipino meal inspired by the flavors commonly enjoyed at home.</p><span class="price-pill">₱100</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section favorites" id="favorites">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Filipino Favorites</div><h2>Good food feels better when shared.</h2><p>A visual collection using the photos you supplied for Sarap Lokal.</p></div>
+        <div class="favorites-grid">
+          <div class="favorite-card reveal"><img src="about-us-photo.jpg" alt="Family sharing Filipino food" loading="lazy"><div class="favorite-label">Made for Filipino tables</div></div>
+          <div class="favorite-card reveal"><img src="adobo.jpg" alt="Sarap Lokal Adobo" loading="lazy"><div class="favorite-label">Adobo</div></div>
+          <div class="favorite-card reveal"><img src="fresh-local-meal.jpg" alt="Sarap Lokal Fresh Local Meal" loading="lazy"><div class="favorite-label">Fresh Local Meal</div></div>
+          <div class="favorite-card reveal"><img src="pinoy-comfort-food.jpg" alt="Sarap Lokal Pinoy Comfort Food" loading="lazy"><div class="favorite-label">Pinoy Comfort Food</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section logistics" id="logistics">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Logistics</div><h2>From local suppliers to your table.</h2><p>Our simple flow helps keep ingredients organized, food prepared properly, and orders ready for delivery or pick-up.</p></div>
+        <div class="steps">
+          <div class="step reveal"><div class="step-num">1</div><h3>Local Suppliers</h3><p>Source fresh ingredients from local suppliers and trusted partners.</p></div>
+          <div class="step reveal"><div class="step-num">2</div><h3>Quality Checking</h3><p>Inspect ingredients for freshness, quality, and suitability before use.</p></div>
+          <div class="step reveal"><div class="step-num">3</div><h3>Proper Storage</h3><p>Store ingredients appropriately to help maintain quality and safety.</p></div>
+          <div class="step reveal"><div class="step-num">4</div><h3>Food Preparation</h3><p>Prepare ingredients carefully before cooking and final assembly.</p></div>
+          <div class="step reveal"><div class="step-num">5</div><h3>Cooking</h3><p>Cook meals with consistent preparation and Filipino-inspired flavors.</p></div>
+          <div class="step reveal"><div class="step-num">6</div><h3>Packaging</h3><p>Pack finished meals properly for customer delivery or pick-up.</p></div>
+          <div class="step reveal"><div class="step-num">7</div><h3>Delivery / Pick-up</h3><p>Orders are prepared for convenient customer collection or local delivery.</p></div>
+          <div class="step reveal"><div class="step-num">8</div><h3>Customer</h3><p>Meals reach the people who will enjoy and share them.</p></div>
+        </div>
+        <div class="flow">Local Suppliers → Quality Checking → Proper Storage → Food Preparation → Cooking → Packaging → Delivery/Pick-up → Customer</div>
+      </div>
+    </section>
+
+    <section class="section price-section" id="price">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Price</div><h2>Simple pricing for everyday Filipino meals.</h2><p>Our featured products and project pricing are shown below.</p></div>
+        <div class="table-wrap"><table><thead><tr><th>Product</th><th>Description</th><th>Price</th></tr></thead><tbody>
+          <tr><td><strong>Adobo</strong></td><td>A classic Filipino dish with a savory and flavorful taste.</td><td><strong>₱120</strong></td></tr>
+          <tr><td><strong>Fresh Local Meal</strong></td><td>A delicious meal prepared using fresh ingredients sourced from local suppliers.</td><td><strong>₱130</strong></td></tr>
+          <tr><td><strong>Pinoy Comfort Food</strong></td><td>A satisfying Filipino meal inspired by flavors commonly enjoyed at home.</td><td><strong>₱100</strong></td></tr>
+        </tbody></table></div>
+        <div class="payment"><span>Cash</span><span>GCash</span></div>
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="container process-grid">
+        <div class="video-wrap reveal"><video controls playsinline preload="metadata" poster="sarap-lokal-poster.jpg"><source src="sarap-lokal-video.mp4" type="video/mp4">Your browser does not support the video tag.</video></div>
+        <div class="process-note reveal"><div class="kicker">Our Process</div><h3>Carefully prepared from local suppliers to your table.</h3><p>From local suppliers to your table, Sarap Lokal carefully prepares every product to bring you delicious Filipino flavors you can enjoy and share.</p></div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section-head"><div class="kicker">Contact Us</div><h2>Let’s connect over good Filipino food.</h2><p>For questions, project inquiries, or customer messages, use the contact details below.</p></div>
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <div class="contact-item"><small>Location</small><strong>Navotas City, Metro Manila</strong></div>
+            <div class="contact-item"><small>Phone</small><strong>09649180084</strong></div>
+            <div class="contact-item"><small>Email</small><strong>Saraplokal787@gmail.com</strong></div>
+            <div class="contact-item"><small>Social Media</small><strong>Facebook / Instagram: Sarap Lokal</strong></div>
+          </div>
+          <div class="contact-form reveal">
+            <form onsubmit="sendMessage(event)"><div><label for="name">Name</label><input id="name" name="name" required></div><div><label for="email">Email</label><input id="email" name="email" type="email" required></div><div><label for="message">Message</label><textarea id="message" name="message" required></textarea></div><button class="btn btn-primary" type="submit">Submit Message</button><p class="form-note">Submitting opens your email app with the message addressed to Sarap Lokal.</p></form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="footer-inner"><div><div class="footer-brand">Sarap Lokal</div><div class="footer-tag">From Local Ingredients to Every Filipino Table.</div></div><div class="footer-tag">© <span id="year"></span> Sarap Lokal • Navotas City, Metro Manila</div></div></footer>
+  <script>
+    const toggle=document.querySelector('.menu-toggle'), links=document.querySelector('.nav-links');
+    toggle.addEventListener('click',()=>{const open=links.classList.toggle('open');toggle.setAttribute('aria-expanded',open)});
+    document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+    document.getElementById('year').textContent=new Date().getFullYear();
+    function sendMessage(e){e.preventDefault();const n=document.getElementById('name').value.trim(),em=document.getElementById('email').value.trim(),m=document.getElementById('message').value.trim();const subject=encodeURIComponent('Sarap Lokal Website Inquiry from '+n);const body=encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\nMessage:\n'+m);window.location.href='mailto:Saraplokal787@gmail.com?subject='+subject+'&body='+body;}
+  </script>
+</body>
+</html>
